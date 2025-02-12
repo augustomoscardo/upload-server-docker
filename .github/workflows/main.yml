@@ -12,11 +12,11 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Debug AWS Region
-        run: echo "AWS_REGION=${{ variables.AWS_REGION }}"
+        run: echo "AWS_REGION=${{ secrets.AWS_REGION }}"
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ variables.AWS_REGION }}
+          aws-region: ${{ secrets.AWS_REGION }}

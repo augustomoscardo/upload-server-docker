@@ -12,7 +12,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Debug AWS Region
-        run: echo "AWS_REGION=${{ vars.AWS_REGION }}"
+        run: echo "AWS_REGION=${{ variables.AWS_REGION }}"
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4

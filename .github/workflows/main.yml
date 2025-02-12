@@ -12,8 +12,8 @@ jobs:
         id: checkout
         uses: actions/checkout@v4
 
-      - name: Debug AWS Region
-        run: echo "AWS_REGION=${{ vars.AWS_REGION }}"
+      # - name: Debug AWS Region
+      # run: echo "AWS_REGION=${{ vars.AWS_REGION }}"
 
       - name: Configure AWS Credentials
         id: configure-aws-credentials

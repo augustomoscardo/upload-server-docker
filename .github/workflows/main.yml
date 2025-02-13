@@ -31,6 +31,8 @@ jobs:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           ECR_REPOSITORY: ${{ vars.ECR_REPOSITORY }}
         run:  |
+          echo "Registry: $ECR_REGISTRY"
+          echo "Repository: $ECR_REPOSITORY"
           docker build -t widget-server:v2 .
           docker tag widget-server:v2 $ECR_REGISTRY/$ECR_REPOSITORY:v2
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:v2

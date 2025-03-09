@@ -87,7 +87,7 @@ jobs:
         uses: awslabs/amazon-app-runner-deploy@main
         with:
           service: ${{ vars.APP_RUNNER_SERVICE_NAME }}
-          image: ${{steps.login-ecr.outputs.registry}}/${{ vars.ECR_REPOSITORY }}:${{ steps.generate-tag.outputs.sha }}
+          image: ${{steps.login-ecr.outputs.registry}}/${{ vars.ECR_REPOSITORY }}:${{ steps.generate_tag.outputs.sha }}
           region: ${{ vars.AWS_REGION }}
           access-role-arn: ${{ secrets.ROLE_ARN }}
           cpu: 1

@@ -9,6 +9,8 @@ import { GetParameterCommand, SSMClient } from '@aws-sdk/client-ssm'
 
 const client = new SSMClient({ region: 'us-east-1' })
 
+import { kmsValues, secretManagerValues, ssmValues } from './infra/aws'
+
 const server = fastify()
 
 server.register(fastifyCors, {
@@ -21,11 +23,17 @@ server.register(healthCheckRoute)
 
 server.listen({ port: 3333, host: '0.0.0.0' }).then(async () => {
   // const values = await vault.read('secret/data/widget-server-stg')
-  const values = await client.send(new GetParameterCommand({
-    Name: 'test'
-  }))
-  console.log(values);
-  
-  console.log('HTTP server running!')  
+  // console.log(values.data.data);
+
+  // const values = await ssmValues()
+  // console.log(values);
+
+  // const results = await kmsValues()
+  // console.log(results);
+
+  const secrets = await secretManagerValues()
+  console.log(secrets);
+
+  console.log('HTTP server running!')
   log.info('HTTP server running!')
 })

@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+
+metadata:
+  name: widget-server-rs
+  namespace: widget
+
+spec:
+  replicas: 5
+  selector: 
+    matchLabels:
+      app: widget-server
+  template:
+    metadata:
+      labels:
+        app: widget-server
+    spec:
+      containers:
+        - name: widget-server
+          image: augustomoscardo/widget-server:v3
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: CLOUDFLARE_ACCESS_KEY_ID
+              value: "#"
+            - name: CLOUDFLARE_SECRET_ACCESS_KEY
+              value: "#"
+            - name: CLOUDFLARE_BUCKET
+              value: "#"
+            - name: CLOUDFLARE_ACCOUNT_ID
+              value: "#"
+            - name: CLOUDFLARE_PUBLIC_URL
+              value: "http://localhost"
+          ports:
+            - containerPort: 3333
+          resources: 
+            requests:
+              cpu: "200m"
+              memory: "256Mi"
+            limits:
+              cpu: "300m"
+              memory: "384Mi"

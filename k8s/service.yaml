@@ -12,5 +12,3 @@ spec:
   ports:
     - port: 80
       targetPort: 3333
-      protocol: TCP
-      name: http

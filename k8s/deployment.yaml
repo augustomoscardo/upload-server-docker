@@ -24,31 +24,11 @@ spec:
         - name: widget-server
           image: augustomoscardo/widget-server:v3
           imagePullPolicy: IfNotPresent
-          envFrom: 
+          envFrom:
             - configMapRef:
                 name: widget-server-cm
-          env:
-            # - name: CLOUDFLARE_BUCKET
-            #   valueFrom:
-            #     configMapKeyRef:
-            #       name: widget-server-cm
-            #       key: CLOUDFLARE_BUCKET
-            # - name: CLOUDFLARE_PUBLIC_URL
-            #   valueFrom:
-            #     configMapKeyRef:
-            #       name: widget-server-cm
-            #       key: CLOUDFLARE_PUBLIC_URL
-
-            - name: CLOUDFLARE_ACCESS_KEY_ID
-              value: "#"
-            - name: CLOUDFLARE_SECRET_ACCESS_KEY
-              value: "#"
-            # - name: CLOUDFLARE_BUCKET
-            #   value: "#"
-            - name: CLOUDFLARE_ACCOUNT_ID
-              value: "#"
-            # - name: CLOUDFLARE_PUBLIC_URL
-            #   value: "http://localhost"
+            - secretRef:
+                name: widget-server-secret
           ports:
             - containerPort: 3333
           startupProbe:
